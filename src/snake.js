@@ -17,7 +17,7 @@ window.onload = function () {
     board.height = rows * blockSize
     board.width = cols * blockSize
     context = board.getContext("2d")
-
+    placeFood()
     update();
 }
 
@@ -31,5 +31,11 @@ function update(){
     context.fillStyle = "red"
     context.fillRect(foodX ,foodY , blockSize , blockSize)
 
+
+}
+
+function placeFood(){
+    foodX = Math.floor(Math.random() * cols) * blockSize;
+    foodY = Math.floor(Math.random() * cols) * blockSize;
 
 }
