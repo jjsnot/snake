@@ -48,7 +48,7 @@ window.onload = function () {
 
     placeFood()
     bestScoreDisplay.textContent = bestScore;
-    document.addEventListener("keyup" , ChangeDirection);
+    document.addEventListener("keydown" , ChangeDirection , {passive : false});
     //update();
     setInterval(update , 1000/10)
 }
@@ -115,6 +115,7 @@ function update(){
 }
 
 function ChangeDirection(e){
+    e.preventDefault();
     if(e.code == "ArrowUp" && velocityY != 1){
         velocityX = 0;
         velocityY = -1;

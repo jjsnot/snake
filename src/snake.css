@@ -1,9 +1,45 @@
-body{
-    font-family: "Arial Black";
+body {
+    font-family: "Arial Black", sans-serif;
     text-align: center;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
 }
-div{
-    font-size: 30px;
-    font-family: "Arial Black";
-    text-align: center;
+
+div {
+    font-size: 24px;
+    margin: 10px;
+}
+
+#board {
+    border: 3px solid #00ff00;
+    background-color: #000000;
+    margin-top: 20px;
+    box-shadow: 0 0 20px #00ff00;
+}
+
+button {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Arial Black", sans-serif;
+    background-color: #00aa00;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #00ff00;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #009900;
+    transform: scale(0.98);
 }
