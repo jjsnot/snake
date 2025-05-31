@@ -21,17 +21,41 @@ var foodY = blockSize * 10
 
 //gameOver
 var gameOver = false
+
+//count
+var count = 0
+
+//best score
+let bestScoreDisplay;
+let bestScore = localStorage.getItem("bestScore") || 0;
 window.onload = function () {
     board = document.getElementById("board")
     board.height = rows * blockSize
     board.width = cols * blockSize
     context = board.getContext("2d")
+
+    bestScoreDisplay = document.getElementById("bestScore");
+    bestScoreDisplay.textContent = bestScore;
+
+
+
+
     placeFood()
+    bestScoreDisplay.textContent = bestScore;
     document.addEventListener("keyup" , ChangeDirection);
     //update();
     setInterval(update , 1000/10)
 }
-
+function setbestscore(){
+    if (count > bestScore){
+        localStorage.setItem("bestScore" , count)
+    }
+}
+function incrementCounter(){
+    let counter = document.getElementById("score")
+    count++
+    counter.textContent =count;
+}
 function update(){
     if(gameOver){
         return;
@@ -44,6 +68,7 @@ function update(){
 
     if(snakeX == foodX && snakeY == foodY){
         snakeBody.push([foodX , foodY])
+        incrementCounter()
         placeFood();
     }
     for(let i = snakeBody.length - 1; i > 0 ;i--){
@@ -63,12 +88,16 @@ function update(){
         //game over conditions
         if(snakeX < 0 || snakeX > cols * blockSize || snakeY < 0 || snakeY > rows * blockSize){
             gameOver = true;
-            alert("GAME OVER!")
+            setbestscore()
+            alert("GAME OVER!\nYOUR SCORE IS " + count)
+            location.reload();
         }
         for(let i = 0; i < snakeBody.length; i++){
             if(snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]){
                 gameOver = true
-                alert("GAME OVER!")
+                setbestscore()
+                alert("GAME OVER!\nYOUR SCORE IS " + count)
+                location.reload();
             }
         }
     }
