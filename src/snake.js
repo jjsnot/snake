@@ -33,10 +33,16 @@ window.onload = function () {
     board.height = rows * blockSize
     board.width = cols * blockSize
     context = board.getContext("2d")
-
+    //best score
     bestScoreDisplay = document.getElementById("bestScore");
     bestScoreDisplay.textContent = bestScore;
-
+    //reset button
+    const resetbttn = document.getElementById("reset")
+    resetbttn.addEventListener("click" , function (){
+        localStorage.removeItem("bestScore");
+        bestScore = 0;
+        bestScoreDisplay.textContent = bestScore;
+    })
 
 
 
